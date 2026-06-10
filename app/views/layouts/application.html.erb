@@ -2,15 +2,38 @@
 <html>
   <head>
     <title>Blog</title>
+
     <meta name="viewport" content="width=device-width,initial-scale=1">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <!-- Bootstrap CSS CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    >
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+
+    <!-- Navbar -->
+    <%= render 'layouts/navigation' %>
+
+    <!-- Flash Messages -->
+    <div class="container mt-3">
+      <%= render 'layouts/messages' %>
+    </div>
+
+    <!-- Main Content -->
     <%= yield %>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
   </body>
 </html>

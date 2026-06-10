@@ -1,0 +1,81 @@
+<div class="container">
+
+  <!-- Error Messages OUTSIDE the form -->
+  <% if @article.errors.any? %>
+    <div class="row justify-content-center mt-3">
+
+      <div class="col-10 col-md-8">
+
+        <div class="alert alert-danger">
+
+          <h4 class="alert-heading">
+            The following errors prevented the article from being saved
+          </h4>
+
+          <ul class="mb-0">
+            <% @article.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+
+        </div>
+
+      </div>
+
+    </div>
+  <% end %>
+
+  <!-- Form -->
+  <div class="row justify-content-center">
+
+    <div class="col-10 col-md-8">
+
+      <%= form_with(model: @article, class: "shadow p-3 mb-3 bg-info rounded") do |form| %>
+
+        <div class="form-group row mb-3">
+
+          <%= form.label :title,
+                class: "col-2 col-form-label text-light" %>
+
+          <div class="col-10">
+            <%= form.text_field :title,
+                  class: "form-control shadow rounded",
+                  placeholder: "Title of article" %>
+          </div>
+
+        </div>
+
+        <div class="form-group row mb-3">
+
+          <%= form.label :descrption,
+                class: "col-2 col-form-label text-light" %>
+
+          <div class="col-10">
+            <%= form.text_area :descrption,
+                  rows: 10,
+                  class: "form-control shadow rounded",
+                  placeholder: "Description of article" %>
+          </div>
+
+        </div>
+
+        <div class="form-group row justify-content-center">
+
+          <%= form.submit "Create Article",
+                class: "btn btn-outline-light btn-lg col-3" %>
+
+        </div>
+
+      <% end %>
+
+    </div>
+
+  </div>
+
+  <div class="text-center mb-3">
+    <%= link_to "[ Cancel and return to articles listing ]",
+          articles_path,
+          class: "text-info" %>
+  </div>
+
+</div>
