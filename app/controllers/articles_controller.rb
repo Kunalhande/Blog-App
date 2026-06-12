@@ -20,7 +20,7 @@ class ArticlesController < ApplicationController
   end
 
 
-  # POST /articles or /articles.json
+  # POST /article or /articles.json
  def create
   @article = Article.new(article_params)
   @article.user = User.first
