@@ -15,6 +15,31 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find_by(id: params[:id])
+
+    unless @user
+      flash[:alert] = "User not found"
+      redirect_to articles_path
+    end
+  end
+
+  def update
+    @user = User.find_by(id: params[:id])
+
+    unless @user
+      flash[:alert] = "User not found"
+      redirect_to articles_path and return
+    end
+
+    if @user.update(user_params)
+      flash[:notice] = "User updated successfully"
+      redirect_to articles_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def user_params
