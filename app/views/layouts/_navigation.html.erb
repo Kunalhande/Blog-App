@@ -46,6 +46,12 @@
             class: "nav-link" %>
       </li>
 
+      <li class="nav-item">
+        <%= link_to "Sign up",
+            signup_path,
+            class: "nav-link" %>
+      </li>
+
     <% end %>
 
     <li class="nav-item dropdown">
@@ -61,6 +67,18 @@
       </a>
 
       <ul class="dropdown-menu">
+
+        <% if logged_in? %>
+          <li>
+            <%= link_to "Create new article",
+                new_article_path,
+                class: "dropdown-item" %>
+          </li>
+
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+        <% end %>
 
         <li>
           <a class="dropdown-item" href="#">
